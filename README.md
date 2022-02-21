@@ -39,34 +39,34 @@ Le choix des activités n'a pas besoin d'être optimal (pas besoin de faire des 
   - vendre un foobar = 1e : temps fixe de vente 10s pour 1 - 5 foobar
  		Je decide d'optimiser et de vendre par 5 (voir si on optimise pour le dernier lot)
     
-  - assembler un foobar (necessite 1 foo et 1 bar) (possibilité d'echec)
+  - assembler un foobar (nécessite 1 foo et 1 bar) (possibilité d'echec)
  	
   - miner du bar
  	
   - miner du foo
 
 **Plusieurs solution:**
-- Prevoir d'avance les taches, en faire une file et distribuer les jetons aux robots. -> Problème avec l'assemblage de foobar qui peut échouer.
+- Prevoir d'avance les taches, en faire une file et distribuer les jetons aux robots -> Problème avec l'assemblage de foobar qui peut échouer.
 
-- Chaque robot arrive et demande une tache, on calcul les tache a la volée. -> Problème, le temps que le robot finisse la tache, elle peut avoir été redemandée à un autre robot: pas optimal
+- Chaque robot arrive et demande une tache, on calcule les tache a la volée -> Problème, le temps que le robot finisse la tache, elle peut avoir été redemandée à un autre robot: pas optimal
 
 
-**Solution choisie:** Solution 2, plus simple à mettre en oeuvre, et l'énoncé ne demnde pas un choix optimal.
+**Solution choisie:** Solution 2, plus simple à mettre en oeuvre et l'énoncé ne demande pas un choix optimal.
 
 ## Implémentation:
 
-Choix d'implémenter un administrateur pour donner une tache au robot (synchronisé)
+Choix d'implémenter un administrateur pour donner une tache au robot (synchronisé).
 
 L'administrateur a accés aux ressources, et seulement lui.
 
-Le robot demande une tache, l'administrateur lui donne une tache ainsi que les ressources associées et se libére.
+Le robot demande une tache, l'administrateur lui donne une tache, ainsi que les ressources associées et se libére.
 
-Quand le robot a fini la tache il revient donner ses nouvelles resources à l'administrateur qui les prend en compte et refait ses calculs de taches en fonction, à l'arrivée d'un nouveau robot.
+Quand le robot a fini la tache, il revient donner ses nouvelles resources à l'administrateur, qui les prend en compte et refait ses calculs de taches en fonction, à l'arrivée d'un nouveau robot.
 
 Pour une question de praticité, 1s est représenté par 10ms dans le code.
 
 ## Evolutions possibles:
-Garder en memoire les actions demandées, pour optimiser.
+Garder en mémoire les actions demandées, pour optimiser.
 
 Optimiser le dernier lot pour ne pas attendre les 5 foobars.
 
@@ -76,9 +76,7 @@ Output plus friendly
 
 
 ## Temps passé: 
-Difficile à dire, temps passé en fractionné.
-
-Environ 2h pour une première solution qui fonctionne, et 1h de plus pour fignoler, refaire des petites améliorations.
+Difficile à dire, temps passé en fractionné. Environ 2h pour une première solution qui fonctionne, et 1h de plus pour fignoler, refaire des petites améliorations.
 
 
 ## Execution: 
