@@ -68,7 +68,7 @@ public enum Action {
             return new Resources(0, 0, 0, 5);
         }
     },
-    BUY_ROBOT("Buy model.Robot") {
+    BUY_ROBOT("Buy Robot") {
         @Override
         public int getTimeMin() {
             return 0;
