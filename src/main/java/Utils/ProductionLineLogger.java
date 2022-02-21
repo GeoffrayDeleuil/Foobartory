@@ -28,7 +28,7 @@ public class ProductionLineLogger {
     }
 
     public static void printChooseAction(Robot robot, Resources resource) {
-        LOGGER.info(resource.toString() + "\t" + robot.toString() + " is asking for action Choosing action ");
+        LOGGER.info(resource.toString() + "\t" + robot.toString() + " is asking for action ");
     }
 
     public static void printAssembleFoobarResult(boolean isSuccess) {
