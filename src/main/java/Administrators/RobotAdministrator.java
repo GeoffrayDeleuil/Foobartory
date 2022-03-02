@@ -6,7 +6,7 @@ import model.Robot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RobotAdministrator {
+public class RobotAdministrator implements IRobotAdministrator {
 
     private int nbRobots;
     private List<Robot> robots;

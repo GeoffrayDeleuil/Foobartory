@@ -3,7 +3,7 @@ package Administrators;
 import model.Action;
 import model.Resources;
 
-public final class ResourcesAdministrator {
+public final class ResourcesAdministrator implements IResourcesAdministrator {
 
     private static ResourcesAdministrator INSTANCE;
     private Resources resources;

@@ -20,11 +20,11 @@ public class ProductionLineLogger {
     }
 
     public static void printAction(Robot robot, Action action, Resources resource) {
-        LOGGER.info(resource.toString() + "\t" + robot.toString() + " is executing action " + action.getActionName());
+        LOGGER.info(resource.toString() + "\t" + robot.toString() + " is executing action " + action.getName());
     }
 
     public static void printExecutedAction(Robot robot, Action action, Resources resource) {
-        LOGGER.info(resource.toString() + "\t" + robot.toString() + " has executed action " + action.getActionName());
+        LOGGER.info(resource.toString() + "\t" + robot.toString() + " has executed action " + action.getName());
     }
 
     public static void printChooseAction(Robot robot, Resources resource) {

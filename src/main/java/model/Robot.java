@@ -1,5 +1,6 @@
 package model;
 
+import Administrators.IRobotAdministrator;
 import Administrators.ResourcesAdministrator;
 import Administrators.RobotAdministrator;
 import Utils.ProductionLineLogger;
@@ -10,10 +11,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Robot implements Runnable {
     private Thread worker;
     int number;
-    RobotAdministrator robotAdministrator;
+    IRobotAdministrator robotAdministrator;
     private AtomicBoolean running = new AtomicBoolean(false);
 
-    public Robot(int number, RobotAdministrator robotAdministrator) {
+    public Robot(int number, IRobotAdministrator robotAdministrator) {
         this.number = number;
         this.robotAdministrator = robotAdministrator;
     }
@@ -45,12 +46,7 @@ public class Robot implements Runnable {
 
     private void takeTimeAndExecuteAction(Action action) {
         try {
-            if (action.getTimeMax() != action.getTimeMin()) {
-                int randomTime = action.getTimeMin() + (int) (Math.random() * ((action.getTimeMax() - action.getTimeMin()) + 1));
-                Thread.sleep(randomTime);
-            } else {
-                Thread.sleep(action.getTimeMin());
-            }
+            Thread.sleep(action.getRandomTime());
             updateResources(action);
         } catch (InterruptedException e) {
             ProductionLineLogger.robotInterrupted(this);
@@ -62,7 +58,7 @@ public class Robot implements Runnable {
         if (actionDone.equals(Action.BUY_ROBOT)) {
             robotAdministrator.buyAndAddRobot();
         } else {
-            Resources updatedResources = resourcesAdministrator.updateResources(actionDone.getResultResources());
+            Resources updatedResources = resourcesAdministrator.updateResources(actionDone.getFinalResources());
             ProductionLineLogger.printExecutedAction(this, actionDone, updatedResources);
         }
     }
